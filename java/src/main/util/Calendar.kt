@@ -1,7 +1,63 @@
 package com.blindknot.extensions.java.util
 
 import java.util.Calendar
+import java.util.Date
 import java.util.concurrent.TimeUnit
+
+
+/**
+ * Set Calendar for the first day of the current month.
+ */
+fun Calendar.firstOfTheMonth(): Calendar {
+    this.set(Calendar.DAY_OF_MONTH, this.getActualMinimum(Calendar.DAY_OF_MONTH))
+    return this
+}
+
+/**
+ * Set Calendar to the next calendar day
+ */
+fun Calendar.nextDay() : Calendar {
+    this.add(Calendar.DAY_OF_MONTH, 1)
+    return this
+}
+
+/**
+ * Set Calendar to the previous calendar day
+ */
+fun Calendar.previousDay() : Calendar {
+    this.add(Calendar.DAY_OF_MONTH, -1)
+    return this
+}
+
+/**
+ * Set Calendar to the current day
+ */
+fun Calendar.today() : Calendar {
+    this.time = Date()
+    this.set(Calendar.HOUR_OF_DAY, this.get(Calendar.HOUR_OF_DAY))
+    this.set(Calendar.MINUTE, this.get(Calendar.MINUTE))
+    this.set(Calendar.SECOND, this.get(Calendar.SECOND))
+    this.set(Calendar.MILLISECOND, this.get(Calendar.MILLISECOND))
+    return this
+}
+
+/**
+ * Set Calendar to tomorrow
+ */
+fun Calendar.tomorrow(): Calendar {
+    this.today()
+    this.add(Calendar.DAY_OF_MONTH, 1)
+    return this
+}
+
+/**
+ * Set Calendar to yesterday
+ */
+fun Calendar.yesterday() : Calendar {
+    this.today()
+    this.add(Calendar.DAY_OF_MONTH, -1)
+    return this
+}
 
 /**
  * Set Calendar to midnight.
@@ -11,14 +67,6 @@ fun Calendar.midnight(): Calendar {
     this.clear(Calendar.MINUTE)
     this.clear(Calendar.SECOND)
     this.clear(Calendar.MILLISECOND)
-    return this
-}
-
-/**
- * Set Calendar for the first day of the current month.
- */
-fun Calendar.firstOfTheMonth(): Calendar {
-    this.set(Calendar.DAY_OF_MONTH, this.getActualMinimum(Calendar.DAY_OF_MONTH))
     return this
 }
 

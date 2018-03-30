@@ -1,7 +1,9 @@
 package com.blindknot.extensions.java.util
 
+import org.junit.Assert
 import org.junit.Test
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import java.util.Calendar
@@ -20,6 +22,74 @@ class CalendarTest() {
     }
 
     @Test
+    fun `is set to the first day of the month`() {
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+        calendar.firstOfTheMonth()
+
+        assertEquals(1, calendar.get(Calendar.DAY_OF_MONTH))
+    }
+
+    @Test
+    fun `is next day`() {
+        val compareCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+        val againstCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+        againstCalendar.nextDay()
+
+        Assert.assertNotEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+
+        compareCalendar.add(Calendar.DAY_OF_MONTH, 1)
+        assertEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+    }
+
+    @Test
+    fun `is previous day`() {
+        val compareCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+        val againstCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+        againstCalendar.previousDay()
+
+        assertNotEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+
+        compareCalendar.add(Calendar.DAY_OF_MONTH, -1)
+        assertEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+    }
+
+    @Test
+    fun `is today`() {
+        val compareCalendar = Calendar.getInstance(TimeZone.getTimeZone("EST"))
+        val againstCalendar = Calendar.getInstance(TimeZone.getTimeZone("EST"))
+        againstCalendar.set(Calendar.HOUR_OF_DAY, 22)
+        againstCalendar.today()
+
+        Assert.assertEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+    }
+
+    @Test
+    fun `is tomorrow`() {
+        val compareCalendar = Calendar.getInstance(TimeZone.getTimeZone("EST"))
+        val againstCalendar = Calendar.getInstance(TimeZone.getTimeZone("EST"))
+        againstCalendar.set(Calendar.HOUR_OF_DAY, 22)
+        againstCalendar.tomorrow()
+
+        assertNotEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+
+        compareCalendar.add(Calendar.DAY_OF_MONTH, 1)
+        assertEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+    }
+
+    @Test
+    fun `is yesterday`() {
+        val compareCalendar = Calendar.getInstance(TimeZone.getTimeZone("EST"))
+        val againstCalendar = Calendar.getInstance(TimeZone.getTimeZone("EST"))
+        againstCalendar.set(Calendar.HOUR_OF_DAY, 22)
+        againstCalendar.yesterday()
+
+        assertNotEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+
+        compareCalendar.add(Calendar.DAY_OF_MONTH, -1)
+        assertEquals(againstCalendar.get(Calendar.DAY_OF_MONTH), compareCalendar.get(Calendar.DAY_OF_MONTH))
+    }
+
+    @Test
     fun `is set to midnight`() {
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
         calendar.midnight()
@@ -28,14 +98,6 @@ class CalendarTest() {
         assertEquals(0, calendar.get(Calendar.MINUTE))
         assertEquals(0, calendar.get(Calendar.SECOND))
         assertEquals(0, calendar.get(Calendar.MILLISECOND))
-    }
-
-    @Test
-    fun `is set to the first day of the month`() {
-        val calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
-        calendar.firstOfTheMonth()
-
-        assertEquals(1, calendar.get(Calendar.DAY_OF_MONTH))
     }
 
     @Test
