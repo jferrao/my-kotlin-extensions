@@ -79,7 +79,6 @@ var Calendar.epoch: Int
 
 /**
  * Check if calendars are set to the same day, month and year.
- *
  * @param calendar Any other calendar used to match against
  * @return True if all conditions match
  */
@@ -91,7 +90,6 @@ fun Calendar.isSameDay(calendar: Calendar): Boolean {
 
 /**
  * Check if calendars are set to the same month and year.
- *
  * @param calendar Any other calendar used to match against
  * @return True if all conditions match
  */
@@ -101,7 +99,6 @@ fun Calendar.isSameMonth(calendar: Calendar): Boolean {
 
 /**
  * Check if calendars are set to the same year.
- *
  * @param calendar Any other calendar used to match against
  * @return True if all conditions match
  */
@@ -111,7 +108,6 @@ fun Calendar.isSameYear(calendar: Calendar): Boolean {
 
 /**
  * Check if calendars are set to the same day of the week.
- *
  * @param calendar Any other calendar used to match against
  * @return True if all conditions match
  */
@@ -121,7 +117,6 @@ fun Calendar.isSameDayOfWeek(calendar: Calendar): Boolean {
 
 /**
  * Check if both calendars are set to the desired year.
- *
  * @param calendar Any other calendar used to match against
  * @param year Year against which to compare against both calendars
  * @return True if all conditions match
