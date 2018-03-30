@@ -5,23 +5,21 @@ import java.util.Locale
 
 
 /**
- * Replace any non-ASCII characters in a String by another String
+ * Replace any non-ASCII characters in a String by another String.
+ *
  * @param replacement Replacement String
  */
-fun String.replaceNonAscii(replacement: String): String {
-    return this.replace("[^\\p{ASCII}]".toRegex(), replacement);
-}
+fun String.replaceNonAscii(replacement: String): String = this.replace("[^\\p{ASCII}]".toRegex(), replacement);
 
 /**
- * Remove all non-ASCII characters from a String
+ * Remove all non-ASCII characters from a String.
  */
-fun String.removeNonAscii(): String {
-    return this.replaceNonAscii("");
-}
+fun String.removeNonAscii(): String = this.replaceNonAscii("");
 
 /**
- * Adjust diacritical marks or letter accents or glyph to its closest non-accented letter
- * e.g. ã gets converted to a
+ * Adjust diacritical marks or letter accents or glyph to its closest non-accented letter.
+ * e.g. "ã" gets converted to "a"
+ *
  * @see <a href="https://en.wikipedia.org/wiki/Diacritic">Diacritic at Wikipedia</a>
  */
 fun String.convertDiacritics(): String {
@@ -33,7 +31,8 @@ fun String.convertDiacritics(): String {
 }
 
 /**
- * Generate an URL friendly slug
+ * Generate an URL friendly slug.
+ *
  * TODO: this could be improved adjusting some other non-ascii chars like ø to o or removing emojis
  */
 fun String.toSLug(): String {

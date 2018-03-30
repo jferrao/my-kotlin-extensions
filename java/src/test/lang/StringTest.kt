@@ -19,7 +19,7 @@ class StringTest() {
     }
 
     @Test
-    fun `all diacritics are replaced`() {
+    fun `all diacritics replaced`() {
         val name = "João"
         Assert.assertEquals("Joao", name.convertDiacritics())
     }
