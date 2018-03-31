@@ -117,7 +117,9 @@ class CalendarTest() {
     @Test
     fun `is same day`() {
         val compareCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+        compareCalendar.set(Calendar.DAY_OF_MONTH, testDay)
         val againstCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+        againstCalendar.set(Calendar.DAY_OF_MONTH, testDay)
         againstCalendar.set(Calendar.HOUR_OF_DAY, testHour)
         againstCalendar.set(Calendar.MINUTE, testMinutes)
         againstCalendar.set(Calendar.SECOND, testSeconds)
