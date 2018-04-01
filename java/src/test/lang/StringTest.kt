@@ -19,6 +19,12 @@ class StringTest() {
     }
 
     @Test
+    fun `all emojis removed from string`() {
+        val name = "João hello world _# 皆さん、こんにちは！　私はジョンと申します。\uD83D\uDD25⭐"
+        assertEquals("João hello world _# 皆さん、こんにちは！　私はジョンと申します。", name.removeEmoji())
+    }
+
+    @Test
     fun `all diacritics replaced`() {
         val name = "João"
         assertEquals("Joao", name.convertDiacritics())
@@ -26,7 +32,7 @@ class StringTest() {
 
     @Test
     fun `is a URL friendly slug`() {
-        val name = "Køtlin extensions by João ©±† €uro"
+        val name = "Køtlin extensions by João ©±† €uro \uD83D\uDD25⭐"
         assertEquals("ktlin-extensions-by-joao-uro", name.toSLug())
     }
 
